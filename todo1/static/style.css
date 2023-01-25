@@ -1,0 +1,14 @@
+.banner{
+    background-color:RebeccaPurple;
+    width:100%;
+    height:100px;
+    margin-bottom:40px;
+}
+
+.banner-text{
+    top:16px;
+    left:47%;
+    position:absolute;
+    transform:transform;
+
+}

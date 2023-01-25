@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1 style="font-family:'Brush Script MT'; font-size:60px;">ToDo</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Enter your tasks here</h3>
+            <form method="post" class="p-3 shadow">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" name="task" placeholder="Enter your task">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="priority" placeholder="Enter task priority">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="date" class="form-control" name="date">
+                </div>
+                <br>
+                <input type="submit" class="btn btn-success">
+            </form>
+            <br>
+
+        </div>
+        <div class="col-md-6">
+            <h4>To be completed</h4>
+            {% for i in details %}
+            <div class="shadow card">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <p><b>{{i.priority}}</b></p>
+                    <p><b>{{i.date}}</b></p>
+                    <a class="btn btn-danger" href="{% url 'delete' i.id %}">Done</a>
+                    <a class="btn btn-warning" href="{% url 'edit' i.id %}">Edit</a>
+                </div>
+
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
